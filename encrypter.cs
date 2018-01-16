@@ -20,10 +20,6 @@ public static class Encrypter
 
     public static byte[] Decrypt(byte[] bytes, string key, string iv)
     {
-        if (bytes == null || bytes.Length <= 0)
-        {
-            return null;
-        }
         using(var aes = GetAes(key, iv))
         using(var memoryStream = new MemoryStream(bytes))
         using(var cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Read))
